@@ -25,9 +25,14 @@ var pets = {
     var pet = yield parse(this);
     db[pet.name] = pet;
     this.body = JSON.stringify(pet);
+  },
+
+  root: function *() {
+    this.body = "<html><body><h1>It Works!</h1>Try <a href='/pets'>listing pets</a> or reading <a href='https://github.com/dockhero/quic-protocol-demo/tree/master'>reading docs</a></body></html>"
   }
 };
 
+app.use(_.get('/', pets.root));
 app.use(_.get('/pets', pets.list));
 app.use(_.post('/pets', pets.create));
 app.use(_.get('/pets/:name', pets.show));
