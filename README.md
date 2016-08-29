@@ -26,3 +26,37 @@ To add new pets, try this in your console:
 ```bash
 curl -H "Content-Type: application/json" -X POST -d '{"name":"kitty","species":"cat"}' https://vital-sun-4864.dockhero.io/pets
 ```
+
+Deployment to Heroku
+--------------------
+
+First, install [CLI plugin](https://github.com/cloudcastle/dockhero-cli)
+
+```bash
+heroku plugins:install dockhero  
+```
+
+Then create a Heroku app and add the addon
+
+```bash
+heroku create
+heroku addons:create dockhero
+heroku dh:wait
+```
+
+This variable will get into Caddyfile due to [variables substitution](https://github.com/cloudcastle/dockhero-cli#variables-substitution)
+
+```bash
+heroku config:set HEROKU_APP_URL=https://XXXXXXXXXXXX.herokuapp.com
+```
+
+Now spin up the stack:
+```bash
+heroku dh:compose up -d
+```
+
+and check the logs with
+
+```bash
+heroku logs --tail -p dockhero
+```
