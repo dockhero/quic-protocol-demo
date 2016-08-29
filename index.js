@@ -22,9 +22,9 @@ var pets = {
   },
 
   create: function *() {
-    var body = yield parse(this);
-    db[body.name] = body;
-    this.body = body;
+    var pet = yield parse(this);
+    db[pet.name] = pet;
+    this.body = JSON.stringify(pet);
   }
 };
 
