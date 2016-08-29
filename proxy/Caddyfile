@@ -1,0 +1,6 @@
+https://*.dockhero.io
+log stdout
+proxy / {$HEROKU_APP_URL}
+tls {
+    max_certs 10
+}

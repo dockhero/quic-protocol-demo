@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  web:
+    build: ./proxy
+    ports:
+      - "80:80"
+      - "80:80/udp"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - caddy_certificates:/root/.caddy
+    environment:
+      HEROKU_APP_URL: ${HEROKU_APP_URL}
+
+volumes:
+  caddy_certificates:
+    driver: local
+
+networks:
+  default:
+    driver: bridge
