@@ -36,10 +36,17 @@ First, install [CLI plugin](https://github.com/cloudcastle/dockhero-cli)
 heroku plugins:install dockhero  
 ```
 
-Then create a Heroku app and add the addon
+Then checkout the repo and deploy it to Heroku. Make sure it is available via `*.herokuapp.com` URL:
 
 ```bash
 heroku create
+git push heroku master
+heroku open
+```
+
+Then install Dockhero addon
+
+```bash
 heroku addons:create dockhero
 heroku dh:wait
 ```
@@ -59,4 +66,10 @@ and check the logs with
 
 ```bash
 heroku logs --tail -p dockhero
+```
+
+If everything went fine, you should be able to see the app via Dockhero URL:
+
+```bash
+heroku dh:open
 ```
