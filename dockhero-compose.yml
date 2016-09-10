@@ -12,7 +12,7 @@ services:
       - caddy_certificates:/srv
     environment:
       VIRTUAL_HOST: ${DOCKHERO_HOST}
-      TARGET_URL: http://app:8080
+      TARGET_URL: ${HEROKU_APP_URL}
 
   app:
     image: dockhero/dockhero-docs:hello
