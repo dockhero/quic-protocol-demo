@@ -14,9 +14,6 @@ services:
       VIRTUAL_HOST: ${DOCKHERO_HOST}
       TARGET_URL: ${HEROKU_APP_URL}
 
-  app:
-    image: dockhero/dockhero-docs:hello
-
 volumes:
   caddy_certificates:
     driver: local
